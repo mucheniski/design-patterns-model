@@ -19,3 +19,35 @@ seus métodos de forma a executar o comportamento esperado da aplicação
 quando um valor nulo for recebido. Dessa forma, em vez de se retornar um valor  
 nulo, retorna-se uma instância dessa nova classe.  
 
+
+## Template method  
+A Figura 2.1 representa o conceito de hookmethod. A superclasse possui um método
+principal público que é invocado pelos seus clientes. Esse método delega parte
+de sua execução para o hook method, que é um método abstrato que deve ser implementado
+pela subclasse. Ele funciona como um “gancho” no qual uma nova lógica
+de execução para a classe pode ser “pendurada”. Cada subclasse o implementa provendo
+uma lógica diferente. Como essa lógica pode ser invocada a partir do mesmo
+método público, definido na superclasse, os hook methods permitem que o objeto
+possua um comportamento diferente de acordo com a subclasse instanciada.  
+![](/img/hookmethods.png)  
+
+O principal padrão que utiliza hook methods como técnica é o Template
+Method. Este padrão é aplicável quando se deseja definir um algoritmo geral, que
+estabelece uma série de passos para cumprir um requisito da aplicação. Porém, seus
+passos podem variar e é desejável que a estrutura da implementação forneça uma
+forma para que eles sejam facilmente substituídos.  
+Como por exemplo um template de documento, onde temos o modelo, porém as informações são diferentes, dependendo do documento.  
+De forma similar, um Template Method é um modelo de algoritmo que possui
+algumas partes fixas e algumas partes variáveis.  
+![](/img/TemplateMethodDocumento.png)  
+
+A Figura 2.3 apresenta a estrutura do padrão Template Method. A
+ClasseAbstrata representa a superclasse que implementa o TemplateMethod
+e que define quais são os hook methods. A ClasseConcreta representa a classe
+que herda o Template Method da ClasseAbstrata e define uma implementação
+concreta dos hook methods. A classe representada como Cliente invoca o
+metodoTemplate(). Observe que apesar do tipo da variável ser do tipo da classe
+abstrata, o tipo instanciado é o da subclasse que implementa os passos concretos do
+algoritmo.
+![](/img/TemplateMethodExample.png)  
+
